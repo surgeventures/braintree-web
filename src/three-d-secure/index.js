@@ -55,10 +55,6 @@ function create(options) {
 
     isProduction = gwConfig.environment === 'production';
 
-    if (isProduction && !isHTTPS()) {
-      error = errors.THREEDS_HTTPS_REQUIRED;
-    }
-
     if (options.version === 2 && !(gwConfig.threeDSecure && gwConfig.threeDSecure.cardinalAuthenticationJWT)) {
       analytics.sendEvent(options.client, 'three-d-secure.initialization.failed.missing-cardinalAuthenticationJWT');
       error = errors.THREEDS_NOT_ENABLED_FOR_V2;
